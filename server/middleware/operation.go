@@ -62,7 +62,7 @@ func OperationRecord() gin.HandlerFunc {
 		latency := time.Now().Sub(now)
 		record.ErrorMessage = c.Errors.ByType(gin.ErrorTypePrivate).String()
 		record.Status = c.Writer.Status()
-		record.Latency = latency
+		record.Latency = int64(latency)
 		record.Resp = writer.body.String()
 
 		if err := service.CreateSysOperationRecord(record); err != nil {
