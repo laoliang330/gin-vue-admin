@@ -3,6 +3,7 @@ package v1
 import (
 	"gin-vue-admin/global"
 	"gin-vue-admin/model/response"
+
 	"github.com/gin-gonic/gin"
 	"github.com/mojocn/base64Captcha"
 	"go.uber.org/zap"
@@ -15,7 +16,7 @@ var store = base64Captcha.DefaultMemStore
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"验证码获取成功"}"
+// @Success 200 {string} string "{"success":true,"data":{CaptchaId: id,PicPath: b64s},"msg":"验证码获取成功"}"
 // @Router /base/captcha [post]
 func Captcha(c *gin.Context) {
 	//字符,公式,验证码配置
